@@ -16,12 +16,15 @@ public class EmployeeServiceImpl implements EmployeeService{
 	@Autowired
 	private EmployeeRepository empRepo;
 	
-	@Autowired
-	private ProjectRepository projectRepo;
 	
 	@Override
-	public List<Employee> getallEmployee() {
+	public List<Employee> getAllEmployee() {
 		return empRepo.findAll();
+	}
+
+	@Override
+	public List<Employee> getAllEmployeesOfProject(Long id) {
+		return empRepo.getAllEmployeesOfProject(id);
 	}
 
 }

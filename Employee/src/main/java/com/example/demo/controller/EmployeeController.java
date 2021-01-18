@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.models.Employee;
+import com.example.demo.models.Project;
 import com.example.demo.service.EmployeeService;
 import com.example.demo.service.ProjectService;
 
@@ -20,20 +21,26 @@ public class EmployeeController {
 	@Autowired
 	private ProjectService projectService;
 	
-	@GetMapping("/getallEmployees")
-	public ResponseEntity<Employee> getallEmployee(){
+	@GetMapping("/getAllEmployees")
+	public ResponseEntity<Employee> getAllEmployees(){
 		
-		return new ResponseEntity(empService.getallEmployee(), HttpStatus.OK);
+		return new ResponseEntity(empService.getAllEmployee(), HttpStatus.OK);
 	}
 	
-	@GetMapping("/getallProjectsOfEmp")
-	public ResponseEntity getallProjectsofEmp(@RequestParam Long id){
+	@GetMapping("/getAllProjectsOfEmp")
+	public ResponseEntity<Project> getAllProjectsOfEmp(@RequestParam Long id){
 		return new ResponseEntity(projectService.getAllProjectsofEmp(id), HttpStatus.OK);
 	}
 	
-	@GetMapping("/getallProjects")
-	public ResponseEntity getallProjects(){
-		
+	@GetMapping("/getAllProjects")
+	public ResponseEntity<Project> getAllProjects(){
 		return new ResponseEntity(projectService.getAllProjects(), HttpStatus.OK);
+	}
+	
+	
+	@GetMapping("/getAllEmployeesOfProject")
+	public ResponseEntity<Employee> getAllEmployeesOfProject(@RequestParam Long id){
+		
+		return new ResponseEntity(empService.getAllEmployeesOfProject(id), HttpStatus.OK);
 	}
 }

@@ -9,6 +9,8 @@ import com.example.demo.models.Project;
 
 public interface EmployeeService {
 
-	List<Employee> getallEmployee();
+	List<Employee> getAllEmployee();
+
+	List<Employee> getAllEmployeesOfProject(Long id);
 
 }

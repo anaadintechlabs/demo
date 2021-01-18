@@ -13,7 +13,7 @@ import com.example.demo.models.Project;
 @Repository
 public interface ProjectRepository extends JpaRepository<Project, Long>{
 
-	@Query( "select u from Project u inner join u.employees r where r.id in :id" )
+	@Query( "select u from Project u inner join u.employees r where r.id = :id" )
 	List<Project> getAllProjectsofEmp(@Param("id")Long emp_id);
 
 }
